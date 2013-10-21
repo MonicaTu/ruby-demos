@@ -1,15 +1,26 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
+:wq
+#
+# Usage:
+#   $ ruby clustering_kmeans.rb filename
+#
 
 require 'spreadsheet'    
 require 'kmeans/pair'
 require 'kmeans/pearson'
 require 'kmeans/cluster'
 
-input_file = "/home/monica/workspace/bioinformatic/project1/dataset/File 2_Cho.xls_2012.xls"
+@filename = "/home/monica/workspace/bioinformatic/project1/dataset/File 2_Cho.xls_2012.xls"
+
+ARGV.each do|a|
+    puts "Argument: #{a}"
+    @filename = "#{a}" 
+end
+
 
 data_hash = Hash.new 
 
-book = Spreadsheet.open(input_file)
+book = Spreadsheet.open(@filename)
 sheet1 = book.worksheet('Sheet1') # can use an index or worksheet name
 
 title = []

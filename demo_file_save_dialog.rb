@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require 'gtk2'
 
 window = Gtk::Window.new("File Chooser Dialog")

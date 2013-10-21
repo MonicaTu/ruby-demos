@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require 'gruff'
 
 g = Gruff::StackedBar.new('450x450') 

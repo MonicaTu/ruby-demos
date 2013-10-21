@@ -1,4 +1,5 @@
-#require 'rubygems'
+#!/usr/bin/env ruby
+
 require 'gruff'
 
 g = Gruff::Bar.new(600) # The graph will be 600 pixels wide.

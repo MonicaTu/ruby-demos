@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 =begin
   cursor.rb - Gdk::Cursor sample script.
 

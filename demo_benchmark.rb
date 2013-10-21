@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require 'benchmark'
 
 time = Benchmark.realtime do

@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 @entries = [
     [2009, 8, 1],
     [2009, 8, 2],

@@ -1,4 +1,5 @@
-#require 'rubygems'
+#!/usr/bin/env ruby
+
 require 'gruff'
 
 # === demo 1 ===

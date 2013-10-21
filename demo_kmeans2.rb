@@ -2,7 +2,7 @@
 
 #
 # Usage:
-#   $ ruby clustering_kmeans.rb filename
+#   $ ./program filename
 #
 
 @filename = "/home/monica/workspace/bioinformatic/project1/dataset/File 2_Cho.xls_2012.xls"

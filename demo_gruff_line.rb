@@ -16,7 +16,7 @@ g.write('gruff_line.png')
 
 
 # === demo 2 ===
-@filename = "/home/monica/workspace/bioinformatic/project1/dataset/File 2_Cho.xls_2012.xls"
+@filename = "/home/monica/workspace/bioinformatic/project1/dataset/File 2_Eisen.xls"
 ARGV.each do|a|
     puts "Argument: #{a}"
     @filename = "#{a}" 
@@ -50,12 +50,27 @@ end
 profile = Gruff::Line.new(600) # The graph will be 600 pixels wide.
 profile.title = 'clusters'
 profile.theme_37signals # The best-looking theme, in my opinion.
-for i in 1..10
-    range = []
-    for j in 1..cols
-        range << sheet1.cell(i, j)
+
+genes = ["YHR051W", "YHR124W", "YGR072W", "YGR218W", "YOR202W", "YBR026C", "YDL177C", "YLR338W", "YOR130C", 
+         "YCR008W", "YJR010W", "YGR219W", "YDR492W", "YCR006C", "YNL120C", "YMR172W", "YBR027C", "YGR147C", 
+         "YOR131C", "YGR074W"] 
+puts genes.size
+
+for i in 0..genes.size-1
+    row_idx = 0
+    sheet1.each(1) do |row|
+    break if row[0].nil? # if first cell empty
+        if (genes[i].eql? row[0])
+            range = []
+            for k in 1..cols
+                range << sheet1.cell(row_idx+1, k)
+            end
+#            p "#{row[0]}: #{range}"
+            profile.data(row[0], range)
+            next
+        end
+        row_idx = row_idx+1
     end
-#    p range
-    profile.data(sheet1.cell(i, 0), range)
 end
 profile.write('gruff_profile.png')
+

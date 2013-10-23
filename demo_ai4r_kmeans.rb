@@ -10,7 +10,10 @@ include Ai4r::Data
             [1, 3], [8, 1], [2, 9], [2, 5], [3, 3], [9, 4]]
 
 data_set = DataSet.new(:data_items => @@data, :data_labels => ["X", "Y"])
-clusterer = KMeans.new.build(data_set, 4)
+
+clusterer = KMeans.new
+clusterer.build(data_set, 4)
+
 clusterer.clusters.each do |cluster|
   p cluster.data_items
 end

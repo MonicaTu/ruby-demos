@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 #
 # Usage:
 #   $ ./program filename
@@ -29,6 +31,13 @@ sheet1.row(0).each do |col|
 end
 #p title
 
+lables = []
+sheet1.each(1) do |row|
+break if row[0].nil? # if first cell empty
+    lables << row[0]
+end
+#p lables
+
 @@data = Array.new 
 i = 0
 sheet1.each(1) do |row|
@@ -48,7 +57,29 @@ include Ai4r::Clusterers
 include Ai4r::Data
 
 data_set = DataSet.new(:data_items => @@data, :data_labels => title)
-clusterer = KMeans.new.build(data_set, 4)
+
+clusterer = KMeans.new.build(data_set, 6)
+
 clusterer.clusters.each do |cluster|
-  p cluster.data_items
+#  p cluster.data_items
+end
+
+#=== profile ===
+require 'gruff'
+
+j = 0
+clusterer.clusters.each do |cluster|
+  profile = Gruff::Line.new(1000) # The graph will be 600 pixels wide.
+  profile.title = 'clusters'
+  profile.theme_37signals # The best-looking theme, in my opinion.
+  profile.hide_legend = true
+  profile.maximum_value = 3
+  profile.minimum_value = -3
+  i = 0
+  cluster.data_items.each do |data_items|
+    profile.data("#{i}", data_items) #FIXME
+    i = i+1
+  end
+  profile.write("profile_#{j}.png")
+  j = j+1
 end

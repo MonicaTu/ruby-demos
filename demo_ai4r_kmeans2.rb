@@ -58,7 +58,8 @@ include Ai4r::Data
 
 data_set = DataSet.new(:data_items => @@data, :data_labels => title)
 
-clusterer = KMeans.new.build(data_set, 6)
+clusterer = KMeans.new
+clusterer.build(data_set, 6)
 
 clusterer.clusters.each do |cluster|
 #  p cluster.data_items
@@ -80,6 +81,6 @@ clusterer.clusters.each do |cluster|
     profile.data("#{i}", data_items) #FIXME
     i = i+1
   end
-  profile.write("profile_#{j}.png")
+  profile.write("kmeans_profile_#{j}.png")
   j = j+1
 end

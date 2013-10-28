@@ -10,12 +10,16 @@ include Ai4r::Data
 
 #=== demo1 ===
 def demo1
-  p "=== demo1 ==="
+  puts "=== demo1 ==="
   data_set = DataSet.new(:data_items => @@data, :data_labels => ["X", "Y"])
   
   clusterer = AverageLinkage.new
   clusterer.build(data_set, 4)
+
+  # Note: Should add attr_reader :index_clusters in lib.
+  puts "\nindex_clusters:\n#{clusterer.index_clusters}"
   
+  puts "\ncluster.data_items:"
   clusterer.clusters.each do |cluster|
     p cluster.data_items
   end
@@ -75,6 +79,6 @@ def demo2b
   book.write 'excel-ai4r_average_linkage.xls'
 end
 
-#demo1
-demo2a
-demo2b
+demo1
+#demo2a
+#demo2b

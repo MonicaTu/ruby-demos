@@ -61,8 +61,12 @@ data_set = DataSet.new(:data_items => @@data, :data_labels => title)
 clusterer = AverageLinkage.new
 clusterer.build(data_set, 6)
 
+# Note: Should add attr_reader :index_clusters in lib.
+puts "\nindex_clusters:\n#{clusterer.index_clusters}"
+
+puts "\ncluster.data_items:"
 clusterer.clusters.each do |cluster|
-#  p cluster.data_items
+  p cluster.data_items
 end
 
 #=== profile ===

@@ -16,6 +16,7 @@ data = [[7, 26, 6, 60 ],
         [11, 66, 9, 12],
         [10, 68, 8, 12]]
 puts "====== data ======"
+p data.length
 data.each { |d| p d }
 
 data_vectors_in_hash = Hash[ data.map {|d| ["d#{data.index(d)}", d.to_scale]} ]
@@ -23,6 +24,7 @@ data_vectors_in_hash = Hash[ data.map {|d| ["d#{data.index(d)}", d.to_scale]} ]
 
 dataT = data.transpose 
 puts "====== dataT ======"
+p dataT.length
 dataT.each { |d| p d }
 
 dataT_vectors_in_hash = Hash[ dataT.map {|d| ["d#{dataT.index(d)}", d.to_scale]} ]
@@ -51,7 +53,7 @@ p pca.m
 puts "====== pca.eigenvectors ======"
 pca.eigenvectors.each { |d| p d }
 
-puts "====== pca.length ======"
+puts "====== pca.eigenvectors.length ======"
 p pca.eigenvectors.length
 
 tranArray = []
